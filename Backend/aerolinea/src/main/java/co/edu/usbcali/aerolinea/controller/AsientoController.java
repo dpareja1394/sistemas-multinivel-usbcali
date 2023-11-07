@@ -35,4 +35,13 @@ public class AsientoController {
         return AsientoMapper.domainToDtoList(asientoRepository.findAll());
     }
 
+    @GetMapping("/obtenerAsientosXAvion/{idAvion}")
+    public List<AsientoDTO> obtenerAsientosXAvion(@PathVariable Integer idAvion) {
+        try {
+            return asientoService.buscarAsientosDeAvion(idAvion);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
