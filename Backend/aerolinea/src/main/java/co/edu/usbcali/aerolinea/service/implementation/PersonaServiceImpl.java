@@ -53,7 +53,7 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public PersonaDTO modificarPersona(PersonaDTO personaDTO) throws Exception {
+    public PersonaDTO editarPersona(PersonaDTO personaDTO) throws Exception {
         return null;
     }
 }

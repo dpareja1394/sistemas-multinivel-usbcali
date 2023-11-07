@@ -6,6 +6,6 @@ public interface PersonaService {
 
     PersonaDTO guardarNuevaPersona(PersonaDTO personaDTO) throws Exception;
 
-    PersonaDTO modificarPersona(PersonaDTO personaDTO) throws Exception;
+    PersonaDTO editarPersona(PersonaDTO personaDTO) throws Exception;
 
 }

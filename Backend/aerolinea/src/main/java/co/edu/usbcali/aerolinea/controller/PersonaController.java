@@ -43,4 +43,13 @@ public class PersonaController {
             throw new RuntimeException(e);
         }
     }
+
+    @PostMapping("/editarPersona")
+    public ResponseEntity<PersonaDTO> editarPersona(@RequestBody PersonaDTO personaDTO) {
+        try {
+            return new ResponseEntity<>(personaService.editarPersona(personaDTO), HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
