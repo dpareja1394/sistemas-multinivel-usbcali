@@ -53,4 +53,12 @@ public class PaisServiceImpl implements PaisService {
     public PaisDTO modificarPaisExistente(PaisDTO paisDTO) throws Exception {
         return null;
     }
+
+    @Override
+    public Pais buscarPaisPorId(Integer id) throws Exception {
+        if (id == null || id.equals(0)) {
+            throw new Exception("No se puede consultar el id ");
+        }
+        return paisRepository.getReferenceById(id);
+    }
 }
