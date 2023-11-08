@@ -52,4 +52,14 @@ public class CiudadController {
     public List<CiudadDTO> buscarPorPaisCodigo(@PathVariable String codigoPais) {
         return CiudadMapper.domainToDtoList(ciudadRepository.findCiudadsByPaisCodigo(codigoPais));
     }
+
+    @PutMapping("/modificarCiudad")
+    public ResponseEntity<CiudadDTO> modificarCiudad(@RequestBody CiudadDTO ciudadDTO) {
+        try {
+            ciudadDTO = ciudadService.modificarCiudad(ciudadDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return new ResponseEntity<>(ciudadDTO, HttpStatus.OK);
+    }
 }

@@ -49,6 +49,35 @@ public class CiudadServiceImpl implements CiudadService {
 
     @Override
     public CiudadDTO modificarCiudad(CiudadDTO ciudadDTO) throws Exception {
-        return null;
+        if( ciudadDTO == null) {
+            throw new Exception("La ciudad es nula");
+        }
+
+        Ciudad ciudad = buscarCiudadPorId(ciudadDTO.getId());
+
+        if (ciudadDTO.getNombre() == null || ciudadDTO.getNombre().isBlank()) {
+            throw new Exception("La ciudad debe tener un nombre");
+        }
+
+        Pais pais = paisService.buscarPaisPorId(ciudadDTO.getIdPais());
+
+        ciudad.setPais(pais);
+        ciudad.setNombre(ciudadDTO.getNombre());
+        ciudad.setLatitud(ciudadDTO.getLatitud());
+        ciudad.setLongitud(ciudadDTO.getLongitud());
+        ciudad.setDescripcion(ciudadDTO.getDescripcion());
+
+        ciudad = ciudadRepository.save(ciudad);
+
+        return CiudadMapper.domainToDto(ciudad);
+    }
+
+    @Override
+    public Ciudad buscarCiudadPorId(Integer id) throws Exception {
+        if (id == null || id.equals(0)) {
+            throw new Exception("No se puede consultar el id ");
+        }
+        return ciudadRepository.findById(id).orElseThrow(
+                () -> new Exception("No se ha encontrado la ciudad con id "+id));
     }
 }
