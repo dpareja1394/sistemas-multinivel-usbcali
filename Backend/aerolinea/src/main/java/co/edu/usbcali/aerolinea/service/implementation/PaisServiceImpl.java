@@ -59,6 +59,7 @@ public class PaisServiceImpl implements PaisService {
         if (id == null || id.equals(0)) {
             throw new Exception("No se puede consultar el id ");
         }
-        return paisRepository.getReferenceById(id);
+        return paisRepository.findById(id).orElseThrow(
+                () -> new Exception("No se ha encontrado el país con id "+id));
     }
 }

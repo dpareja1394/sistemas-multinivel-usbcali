@@ -35,9 +35,9 @@ public class CiudadServiceImpl implements CiudadService {
         }
 
         Pais pais = paisService.buscarPaisPorId(ciudadDTO.getIdPais());
-        if(pais == null) {
+        /*if(pais == null) {
             throw new Exception("No se ha encontrado el país con id "+ciudadDTO.getIdPais());
-        }
+        }*/
 
         Ciudad ciudad = CiudadMapper.dtoToDomain(ciudadDTO);
         ciudad.setPais(pais);
